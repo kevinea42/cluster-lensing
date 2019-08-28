@@ -9,10 +9,10 @@ These files are bash scripts, useful for QLens users:
   mkdist_E          
   Run mkdist to create the .err file (shows parameter 50th-percentile values).
   
-  triplot
+  triplot 
   Make the triangle plot.
   
-  qllog
+  qllog 
   To run QLens, potentially on multiple cores in mpi (requires MPI be installed), and copy all output to a
                     .log file. The usage is 
                     qllog <scriptname.in> <n>
