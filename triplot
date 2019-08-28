@@ -1,0 +1,9 @@
+#!/bin/bash
+# A script to automatically make the python triangle plot
+label=${PWD##*/}
+printf '%q\n' $label
+# Now need to strip off the leading part: 'chains_'
+label=${label:7}
+echo 'label is now ' $label
+echo 'Making triangle plot'
+python "${label}_tri.py" 

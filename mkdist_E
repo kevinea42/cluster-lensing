@@ -1,0 +1,11 @@
+#!/bin/bash
+# A script to automatically run the -E (.err) file in the current directory
+# and now also adds the best-fit chi square ('-b')
+label=${PWD##*/}
+printf '%q\n' $label
+# Now need to strip off the leading part: 'chains_'
+label=${label:7}
+echo 'label is now ' $label
+echo 'Making mkdist err file: -E -b'
+read -p "Press [Enter] key to begin."
+mkdist $label -E -b | tee $label.err

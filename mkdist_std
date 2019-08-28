@@ -1,0 +1,12 @@
+#!/bin/bash
+# A script to automatically run the common mkdist commands that I've been using
+label=${PWD##*/}
+printf '%q\n' $label
+# Now need to strip off the leading part: 'chains_'
+label=${label:7}
+echo 'label is now ' $label
+echo 'Making standard mkdist files: -E, -b and -n40 -N40'
+read -p "Press [Enter] key to begin."
+mkdist $label -E -b | tee $label.err
+read -p "Press [Enter] to continue."
+mkdist $label -n40 -N40

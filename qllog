@@ -1,0 +1,30 @@
+#!/bin/bash
+# A script to make an qlens log output, and potentially mpirun on an input file, with the specified number of cores.
+
+# check that there are two parameters following the command
+if [ $# -ne 2 ]; then
+    echo "Your command line should have two arguments but contains $# arguments"
+    exit 1
+fi
+inp1=$1 # this avoids the confusing convention that '1' and '2' are variable names.
+inp2=$2
+# check that the first parameter ends in '.in'
+# Note: quotes are used around the variable in case it is empty. It would otherwise error on and empty string.
+if [ "${inp1: -3}" != '.in' ]; then
+    echo "The first parameter should be an input script, ending in .in"
+    exit 1
+fi 
+
+# strip off the '.in' and append '.log'
+label="${inp1:0: -3}".log
+
+echo 'Logging output to: ' $label
+
+echo $inp2 'cores requested.'
+
+if [ $inp2 -gt 1 ]; then
+    mpirun -n $inp2 qlens $1 | tee $label
+else
+    qlens $1 | tee $label
+fi
+

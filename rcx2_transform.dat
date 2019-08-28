@@ -1,0 +1,3 @@
+# transform script - A2537 cnfw
+2 log name= logrc_kpc latex_name=log(rc_{kpc})
+13 log name=logrc latex_name=log(r_c)
